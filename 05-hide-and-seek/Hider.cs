@@ -11,15 +11,21 @@ namespace _05_hide_and_seek
     /// </summary>
     public class Hider
     {
+        int _hiderLocale;
+        List<int> deltaDisplacement = new List<int>();
+        int _newDisplacement;
+        int _oldDisplacement;
+        int _numberOfHints = 0;
         // TODO: Add any member variables here
-
         /// <summary>
         /// Initializes the location of the hider to a random location 1-1000.
         /// Also initializes the list of distances to be a new, empty list.
         /// </summary>
         public Hider()
         {
-            throw new NotImplementedException();
+            Random rand = new Random();
+            _hiderLocale = rand.Next(1,1001);
+            // throw new NotImplementedException();
         }
 
         /// <summary>
@@ -29,7 +35,10 @@ namespace _05_hide_and_seek
         /// <param name="seekerLocation">The current location of the seeker.</param>
         public void Watch(int seekerLocation)
         {
-            throw new NotImplementedException();
+            _oldDisplacement = _newDisplacement;
+            _newDisplacement = Math.Abs(seekerLocation - _hiderLocale);
+            deltaDisplacement.Add(_newDisplacement);
+            // throw new NotImplementedException();
         }
 
         /// <summary>
@@ -43,7 +52,28 @@ namespace _05_hide_and_seek
         /// <returns>The hint message</returns>
         public string GetHint()
         {
-            throw new NotImplementedException();
+            string _hintOutput;
+            _numberOfHints++;
+            if(_numberOfHints <= 1)
+            {
+                _hintOutput = "Well, you're somewhere, but I don't have enough info to say you're warmer or colder yet.";
+                return _hintOutput;
+            }
+            else
+            {
+                if(_oldDisplacement > _newDisplacement)
+                {
+                    _hintOutput = "You're getting Warmer";
+                    return _hintOutput;
+                }
+                else if(_oldDisplacement < _newDisplacement)
+                {
+                    _hintOutput = "You're getting Colder";
+                    return _hintOutput;
+                }
+            }
+            return "Still waiting for you";
+            // throw new NotImplementedException();
         }
 
         /// <summary>
@@ -52,7 +82,19 @@ namespace _05_hide_and_seek
         /// <returns>True if the hider has been found.</returns>
         public bool IsFound()
         {
-            throw new NotImplementedException();
+            bool output = false;
+            if(_newDisplacement == 0)
+            {
+                Console.WriteLine("You Found Me!");
+                output = true;
+                return output;
+            }
+            else
+            {
+                output = false;
+                return output;
+            }
+            // throw new NotImplementedException();
         }
     }
 }

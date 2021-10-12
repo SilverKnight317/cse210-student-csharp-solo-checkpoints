@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace _05_hide_and_seek
 {
@@ -17,7 +18,7 @@ namespace _05_hide_and_seek
         /// <summary>
         /// Displays the provided text.
         /// </summary>
-        /// <param name="text">The text to display</param>
+        /// <param> name="text">The text to display</param>
         public void DisplayText(string text)
         {
             Console.WriteLine(text);
@@ -33,14 +34,36 @@ namespace _05_hide_and_seek
         {
             Console.Write(promptText);
             string userInput = Console.ReadLine();
-
+            // For some reason, bool and the rest didn't work, so I'll work on that after some other things.
+            /*
+            int numbercheck = 0;
+            bool continue = false;
+            while (continue != true)
+            {
+                if (numbercheck.ToString() == userInput)
+                {
+                    continue = true;
+                    int numericChoice = int.Parse(userInput);
+                    return numericChoice;
+                }
+                else
+                {
+                    a++;
+                    if (a >= 1001)
+                    {
+                        throw new NotImplementedException();
+                    }
+                }
+            }
+            */
+            int numericChoice = int.Parse(userInput);
+            return numericChoice;
+            
             // One of the benefits of abstracting this user i/o into this service class
             // is that we could add extra functionality here, such as checking
             // for a valid number and re-prompting if the user entered something invalid.
             
             // For simplicity, right now, it assumes proper input.
-            int numericChoice = int.Parse(userInput);
-            return numericChoice;
         }
     }
 }
