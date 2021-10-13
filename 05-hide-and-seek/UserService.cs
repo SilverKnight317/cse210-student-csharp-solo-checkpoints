@@ -35,27 +35,23 @@ namespace _05_hide_and_seek
             Console.Write(promptText);
             string userInput = Console.ReadLine();
             // For some reason, bool and the rest didn't work, so I'll work on that after some other things.
-            /*
-            int numbercheck = 0;
-            bool continue = false;
-            while (continue != true)
+            /*bool continue_parsing = false;
+            while(!continue_parsing)
             {
-                if (numbercheck.ToString() == userInput)
+                for(int i = 0; i < 1001; i++)
                 {
-                    continue = true;
-                    int numericChoice = int.Parse(userInput);
-                    return numericChoice;
-                }
-                else
-                {
-                    a++;
-                    if (a >= 1001)
+                    string ii = i.ToString();
+                    if(ii == userInput)
                     {
-                        throw new NotImplementedException();
+                        continue_parsing = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("I believe you didn't put a correct integer value in between 1 and 1000. \nPlease try again.");
+                        userInput = Console.ReadLine();
                     }
                 }
-            }
-            */
+            }*/
             int numericChoice = int.Parse(userInput);
             return numericChoice;
             

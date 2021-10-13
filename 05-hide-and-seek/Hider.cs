@@ -12,7 +12,7 @@ namespace _05_hide_and_seek
     public class Hider
     {
         int _hiderLocale;
-        List<int> deltaDisplacement = new List<int>();
+        List<int> distance = new List<int>();
         int _newDisplacement;
         int _oldDisplacement;
         int _numberOfHints = 0;
@@ -37,7 +37,7 @@ namespace _05_hide_and_seek
         {
             _oldDisplacement = _newDisplacement;
             _newDisplacement = Math.Abs(seekerLocation - _hiderLocale);
-            deltaDisplacement.Add(_newDisplacement);
+            distance.Add(_newDisplacement);
             // throw new NotImplementedException();
         }
 
