@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace _06_nim
 {
@@ -12,12 +13,15 @@ namespace _06_nim
     class Board
     {
         // TODO: Declare any member variables here.
-
+        List<int> _piles = new List<int>();
+        int _pileCount;
+        Random rnd = new Random();
         /// <summary>
         /// Initialize the Board
         /// </summary>
         public Board()
         {
+            Prepare();
         }
 
         /// <summary>
@@ -29,7 +33,12 @@ namespace _06_nim
         /// </summary>
         private void Prepare()
         {
-            throw new NotImplementedException();
+            _pileCount = rnd.Next(2,5);
+            for (int i = 0; i <= _pileCount; i++)
+            {
+                _piles.Add(rnd.Next(1,9));
+            }
+            // throw new NotImplementedException();
         }
 
         /// <summary>
@@ -48,7 +57,19 @@ namespace _06_nim
         /// <returns>True, if there are no more stones</returns>
         public bool IsEmpty()
         {
-            throw new NotImplementedException();
+            int _rockSum = 0;
+            bool _empty = false;
+            for (int s = 0; s <= _pileCount; s++)
+            {
+                _rockSum += _piles[s];
+
+            }
+            if(_rockSum == 0)
+            {
+                _empty = true;
+            }
+            return _empty;
+            // throw new NotImplementedException();
         }
 
         /// <summary>
@@ -64,7 +85,22 @@ namespace _06_nim
         /// <returns>The string representation.</returns>
         public override string ToString()
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+            string bars = "--------------------";
+            for (int u = 0; u <= _pileCount + 2; u++)
+            {
+                if (u == 0 || u == _pileCount +2)
+                {
+                    sb.Append($"{bars} \n");
+                }
+                else if (u >= 1 || u <= _pileCount + 1)
+                {
+                    sb.Append($"{GetTextForPile(u - 1, _piles[u - 1])} \n");
+                    // GetTextForPile(u, _piles[u]));
+                }
+            }
+            return sb.ToString();
+            // throw new NotImplementedException();
         }
 
         /// <summary>
@@ -79,7 +115,14 @@ namespace _06_nim
         /// <returns></returns>
         private string GetTextForPile(int pileNumber, int stones)
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"{pileNumber}: ");
+            for (int o = 0; o <= stones; o++)
+            {
+                sb.Append("O ");
+            }
+            
+            return sb.ToString();
         }
     }
 }
