@@ -96,4 +96,5 @@ namespace _06_nim
 
             _roster.AdvanceNextPlayer();
         }
-    }}
+    }
+}
