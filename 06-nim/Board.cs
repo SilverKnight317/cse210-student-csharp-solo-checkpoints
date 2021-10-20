@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace _06_nim
 {
@@ -40,6 +42,52 @@ namespace _06_nim
             }
             // throw new NotImplementedException();
         }
+        public void FireWorks()
+        {
+            Console.WriteLine(
+            "      )  \n",
+            "      (  \n",
+            "    .-`-.\n",
+            "    :   :\n",
+            "    :TNT:\n",
+            "    :___:");
+            Task.Delay(100);
+            Console.WriteLine(
+            "      |/ \n",
+            "    - o -\n",
+            "    /-`-.\n",
+            "    :   :\n",
+            "    :TNT:\n",
+            "    :___:\n");
+            Task.Delay(100);
+            Console.WriteLine(
+            "    .---.\n",
+            "    : | :\n",
+            "    :-o-:\n",
+            "    :_|_:");
+            Task.Delay(100);
+            Console.WriteLine(
+            "    .---.\n",
+            "    ( |/)\n",
+            "    --0--\n",
+            "    (/| )");
+            Task.Delay(100);
+            Console.WriteLine(
+            "   '.`|/.'\n",
+            "   (`   /)\n",
+            "   - -O- -\n",
+            "   (/   `)\n",
+            "   ,'/|`'.");
+            Task.Delay(100);
+            Console.WriteLine(
+            "'.  ` | /  ,'\n",
+            "  `. `.' ,'\n",
+            " ( .`.|,' .)\n",
+            " - ~ -0- ~ -\n",
+            " ( ','|'. `)\n",
+            "  .' .'. '.\n",
+            ",'  / | `  '.");
+        }
 
         /// <summary>
         /// Applies this move by removing the number of stones
@@ -48,7 +96,11 @@ namespace _06_nim
         /// <param name="move">Contains the pile and the number of stones</param>
         public void Apply(Move move)
         {
-            throw new NotImplementedException();            
+            int movePileNumber = move.GetPile();
+            int stonesToRemove = move.GetStones();
+            int _newPileNumber = _piles[movePileNumber] - stonesToRemove;
+            _piles[movePileNumber] = _newPileNumber;
+            // throw new NotImplementedException();            
         }
 
         /// <summary>
@@ -64,7 +116,7 @@ namespace _06_nim
                 _rockSum += _piles[s];
 
             }
-            if(_rockSum == 0)
+            if(_rockSum == 0 || _rockSum < 0)
             {
                 _empty = true;
             }
@@ -117,7 +169,7 @@ namespace _06_nim
         {
             StringBuilder sb = new StringBuilder();
             sb.Append($"{pileNumber}: ");
-            for (int o = 0; o <= stones; o++)
+            for (int o = 1; o <= stones; o++)
             {
                 sb.Append("O ");
             }

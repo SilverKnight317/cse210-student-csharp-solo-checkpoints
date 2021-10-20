@@ -91,6 +91,7 @@ namespace _06_nim
                 string name = winningPlayer.GetName();
 
                 _userService.DisplayText($"{name} won!");
+                // _board.FireWorks();
                 _keepPlaying = false;
             }
 
